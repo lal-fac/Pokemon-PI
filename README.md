@@ -140,7 +140,7 @@ __Ruta de creación__: debe contener
 
 El modelo de la base de datos deberá tener las siguientes entidades (Aquellas propiedades marcadas con asterísco deben ser obligatorias):
 
-- [ ] Pokemon con las siguientes propiedades:
+- [  ] Pokemon con las siguientes propiedades:
   - ID (Número de Pokemon) * : No puede ser un ID de un pokemon ya existente en la API pokeapi
   - Nombre *
   - Vida
@@ -149,7 +149,7 @@ El modelo de la base de datos deberá tener las siguientes entidades (Aquellas p
   - Velocidad
   - Altura
   - Peso
-- [ ] Tipo con las siguientes propiedades:
+- [  ] Tipo con las siguientes propiedades:
   - ID
   - Nombre
 
@@ -163,10 +163,10 @@ Se debe desarrollar un servidor en Node/Express con las siguientes rutas:
 
 __IMPORTANTE__: No está permitido utilizar los filtrados, ordenamientos y paginados brindados por la API externa, todas estas funcionalidades tienen que implementarlas ustedes.
 
-- [ ] __GET /pokemons__:
+- [ x ] __GET /pokemons__:
   - Obtener un listado de los pokemons desde pokeapi.
   - Debe devolver solo los datos necesarios para la ruta principal
-- [ ] __GET /pokemons/{idPokemon}__:
+- [ x ] __GET /pokemons/{idPokemon}__:
   - Obtener el detalle de un pokemon en particular
   - Debe traer solo los datos pedidos en la ruta de detalle de pokemon
   - Tener en cuenta que tiene que funcionar tanto para un id de un pokemon existente en pokeapi o uno creado por ustedes
