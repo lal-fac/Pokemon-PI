@@ -118,10 +118,26 @@ module.exports = {
     },
     saveTypes: async function(){
         try{
-            const response = await axios.get(`https://pokeapi.co/api/v2/type`);
-            response = response.results;
-        } catch(err) {
+            let response = await axios.get(`https://pokeapi.co/api/v2/type`);
+            let types = response.data.results;
 
+            await Types.bulkCreate(types);
+
+            return await this.getTypes();
+        } catch(err) {
+            if(err.original.code == '23505'){
+                return await this.getTypes();
+            }else {
+                throw new Error("Couldn't save Pokemon types");
+            }
+        }
+    },
+    getTypes: async function(){
+        try{
+            let types = await Types.findAll();
+            return types;
+        } catch(err){
+            throw new Error("Couldn't get Pokemon types");
         }
     }
 }

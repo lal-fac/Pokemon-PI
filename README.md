@@ -140,7 +140,7 @@ __Ruta de creación__: debe contener
 
 El modelo de la base de datos deberá tener las siguientes entidades (Aquellas propiedades marcadas con asterísco deben ser obligatorias):
 
-- [  ] Pokemon con las siguientes propiedades:
+- [ x ] Pokemon con las siguientes propiedades:
   - ID (Número de Pokemon) * : No puede ser un ID de un pokemon ya existente en la API pokeapi
   - Nombre *
   - Vida
@@ -149,7 +149,7 @@ El modelo de la base de datos deberá tener las siguientes entidades (Aquellas p
   - Velocidad
   - Altura
   - Peso
-- [  ] Tipo con las siguientes propiedades:
+- [ x ] Tipo con las siguientes propiedades:
   - ID
   - Nombre
 
@@ -170,13 +170,13 @@ __IMPORTANTE__: No está permitido utilizar los filtrados, ordenamientos y pagin
   - Obtener el detalle de un pokemon en particular
   - Debe traer solo los datos pedidos en la ruta de detalle de pokemon
   - Tener en cuenta que tiene que funcionar tanto para un id de un pokemon existente en pokeapi o uno creado por ustedes
-- [ ] __GET /pokemons?name="..."__:
+- [ x ] __GET /pokemons?name="..."__:
   - Obtener el pokemon que coincida exactamente con el nombre pasado como query parameter (Puede ser de pokeapi o creado por nosotros)
   - Si no existe ningún pokemon mostrar un mensaje adecuado
-- [ ] __POST /pokemons__:
+- [ x ] __POST /pokemons__:
   - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de pokemons por body
   - Crea un pokemon en la base de datos relacionado con sus tipos.
-- [ ] __GET /types__:
+- [ x ] __GET /types__:
   - Obtener todos los tipos de pokemons posibles
   - En una primera instancia deberán traerlos desde pokeapi y guardarlos en su propia base de datos y luego ya utilizarlos desde allí
 
