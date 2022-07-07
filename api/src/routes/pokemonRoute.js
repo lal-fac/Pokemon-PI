@@ -26,7 +26,6 @@ router.get('', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     const { id } = req.params;
-    console.log(typeof id);
     try{
         const data = await routeModels.getPokemonDetailId(id);
         return res.json(data);
@@ -38,7 +37,7 @@ router.get('/:id', async (req, res) => {
 router.post('', async (req, res) => {
     try {
         const newPokemon = await routeModels.addPokemon(req.body);
-        res.json(newPokemon);
+        return res.json(newPokemon);
     } catch(err) {
         return res.status(400).json({"error": err.message});
     }

@@ -63,8 +63,7 @@ module.exports = (sequelize) => {
       }
     },
     img: {
-      type: DataTypes.BLOB('long'),
-      allowNull: true
+      type: DataTypes.BLOB
     }
   },
   {

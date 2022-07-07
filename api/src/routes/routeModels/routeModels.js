@@ -34,7 +34,8 @@ module.exports = {
                 name: response.data.name,
                 id: response.data.id,
                 types: response.data.types,
-                img: response.data.sprites.other["official-artwork"].front_default,
+                img: response.data.sprites.front_default,
+                bigImg: response.data.sprites.other["official-artwork"].front_default,
                 stats: response.data.stats,
                 height: response.data.height,
                 weight: response.data.weight
