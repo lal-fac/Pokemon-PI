@@ -111,7 +111,7 @@ __Pagina inicial__: deben armar una landing page con
 __Ruta principal__: debe contener
 
 - [ ] Input de búsqueda para encontrar pokemons por nombre (La búsqueda será exacta, es decir solo encontrará al pokemon si se coloca el nombre completo)
-- [ ] Área donde se verá el listado de pokemons. Al iniciar deberá cargar los primeros resultados obtenidos desde la ruta `GET /pokemons` y deberá mostrar su:
+- [ x ] Área donde se verá el listado de pokemons. Al iniciar deberá cargar los primeros resultados obtenidos desde la ruta `GET /pokemons` y deberá mostrar su:
   - Imagen
   - Nombre
   - Tipos (Electrico, Fuego, Agua, etc)
@@ -123,10 +123,10 @@ __IMPORTANTE__: Dentro de la Ruta Principal se deben mostrar tanto los pokemons 
 
 __Ruta de detalle de Pokemon__: debe contener
 
-- [ ] Los campos mostrados en la ruta principal para cada pokemon (imagen, nombre y tipos)
-- [ ] Número de Pokemon (id)
-- [ ] Estadísticas (vida, ataque, defensa, velocidad)
-- [ ] Altura y peso
+- [ x ] Los campos mostrados en la ruta principal para cada pokemon (imagen, nombre y tipos)
+- [ x ] Número de Pokemon (id)
+- [ x ] Estadísticas (vida, ataque, defensa, velocidad)
+- [ x ] Altura y peso
 
 __Ruta de creación__: debe contener
 

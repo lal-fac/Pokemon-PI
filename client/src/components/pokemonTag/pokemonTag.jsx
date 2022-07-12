@@ -1,10 +1,14 @@
-import { TypeTag } from "../typeTag";
+import { Link } from 'react-router-dom';
+
+import { TypeTag } from "../typeTag/typeTag.jsx";
 
 
 export function PokemonTag ({ name, img, types, id }) {
     return (
         <div>
-            <p>{name}</p>
+            <Link to={`/pokemon/${id}`}>
+                <p>{name}</p>
+            </Link>
             <img src={img} alt={name}/>
             <ul>
             {types && types.map(t => {

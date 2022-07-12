@@ -16,7 +16,7 @@ const rootReducer = function (state = initialState, action) {
         case 'getPokemonDetail':
             return {
                 ...state,
-                pokemonDetail: action.payload
+                pokemonDetail: action.payload.data
             };
         case 'getTypes':
             return {
