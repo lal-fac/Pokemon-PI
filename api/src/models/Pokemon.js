@@ -62,6 +62,10 @@ module.exports = (sequelize) => {
         max: 1000
       }
     },
+    created: {
+      type: DataTypes.BOOLEAN,
+      default: true
+    },
     img: {
       type: DataTypes.BLOB
     }

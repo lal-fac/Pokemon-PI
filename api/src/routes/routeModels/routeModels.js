@@ -13,7 +13,7 @@ module.exports = {
                 })
             );
             apiData = apiData.map(p => {
-                return {name: p.name, id: p.id, types: p.types, img: p.img}
+                return {name: p.name, id: p.id, types: p.types, img: p.img, created: p.created, attack: p.stats[1]["base_stat"]}
             });
 
             let dbData = await Pokemon.findAll({
@@ -33,12 +33,13 @@ module.exports = {
             const data = {
                 name: response.data.name,
                 id: response.data.id,
-                types: response.data.types,
+                types: response.data.types.map(e => e.type.name),
                 img: response.data.sprites.front_default,
                 bigImg: response.data.sprites.other["official-artwork"].front_default,
                 stats: response.data.stats,
                 height: response.data.height,
-                weight: response.data.weight
+                weight: response.data.weight,
+                created: false
             };
             return data;
         } catch (err) {
@@ -66,7 +67,7 @@ module.exports = {
                     const data = {
                         name: response.data.name,
                         id: response.data.id,
-                        types: response.data.types,
+                        types: response.data.types.map(e => e.type.name),
                         img: response.data.sprites.front_default,
                         bigImg: response.data.sprites.other["official-artwork"].front_default,
                         stats: response.data.stats,
