@@ -21,7 +21,7 @@ const rootReducer = function (state = initialState, action) {
         case 'getTypes':
             return {
                 ...state, 
-                types: action.payload
+                types: action.payload.data
             };
         default:
             return {...state};

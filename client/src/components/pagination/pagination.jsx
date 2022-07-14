@@ -1,4 +1,3 @@
-
 export default function Pagination({ activePage, count, tagsPerPage, totalPages, setActivePage }){
     
     const beginning = activePage === 1 ? 1 : tagsPerPage * (activePage - 1) + 1;

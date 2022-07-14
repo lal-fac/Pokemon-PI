@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import { getPokemonDetail } from "../../redux/actions";
-import { TypeTag } from "../typeTag/typeTag";
+import TypeTag from "../typeTag/typeTag";
 
 export default function DetailCard(){
 
@@ -13,11 +13,13 @@ export default function DetailCard(){
 
 
     useEffect(() => {
-        dispatch(getPokemonDetail(pokemonId)) //missing get name from params
+        dispatch(getPokemonDetail(pokemonId)) 
     }, []);
 
     let pokemon = useSelector(state => state.pokemonDetail);
 
+    console.log(pokemon);
+    
     return (
         <div>
             <h3>{pokemon.name}</h3>
@@ -38,9 +40,8 @@ export default function DetailCard(){
             {pokemon.types && pokemon.types.map(t => {
                 return(
                     <TypeTag 
-                        key={`${pokemon.id}.${t.slot}`}
-                        slot={`${pokemon.id}.${t.slot}`}
-                        name={t.type.name} 
+                        key={`${t}`}
+                        name={t} 
                     />
                 );
             })}

@@ -1,6 +1,6 @@
-export function TypeTag({slot, name}) {
+export default function TypeTag({name}) {
     return (
-        <h6 id={slot}>
+        <h6 id={name}>
             {name}
         </h6>
     )
