@@ -10,6 +10,13 @@ export const getPokemon = () => dispatch => {
             })
         })
     );
+};
+
+export const cleanPokemonDetail = () => dispatch => {
+    return dispatch({
+        type: 'cleanPokemonDetail',
+        payload: null
+    })
 }
 
 export const getPokemonDetail = (poke) => dispatch => {

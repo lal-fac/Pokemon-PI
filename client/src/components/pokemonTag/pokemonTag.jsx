@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import TypeTag from "../typeTag/typeTag.jsx";
 
 
-export default function PokemonTag ({ name, img, types, id }) {
+export default function PokemonTag ({ name, img, types, id, attack }) {
     return (
-        <div>
+        <span title={`ID: ${id} attack: ${attack}`}>
             <Link to={`/pokemon/${id}`}>
                 <p>{name}</p>
             </Link>
@@ -20,6 +20,6 @@ export default function PokemonTag ({ name, img, types, id }) {
                 );
             })}
             </ul>
-        </div>
+        </span>
     )
 }

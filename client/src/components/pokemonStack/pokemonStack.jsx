@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from "react-redux"
 import { useLocation } from "react-router-dom";
 
 import { getPokemon, getTypes } from "../../redux/actions";
+import ClearAll from "../clearAll/clearAll";
 import Filtering from "../filterTags/filtering";
 import { filterTags, searchTag } from "../filterTags/filterTags";
-import Order from "../order/tagOrder";
+import Order, { orderTags } from "../order/tagOrder";
 import Pagination from "../pagination/pagination";
 import PokemonTag from "../pokemonTag/pokemonTag";
-import Search from "../search/search";
 
 
 export default function PokemonStack(){
@@ -18,12 +18,11 @@ export default function PokemonStack(){
     useEffect(() => {
         dispatch(getPokemon());
         dispatch(getTypes());
-    }, []);
+    }, [dispatch]);
 
     let pokemon = useSelector(state => state.pokemon);
     let types = useSelector(state => state.types);
     
-
     //get query name from url
     const { search } = useLocation();
     const queryParams = new URLSearchParams(search);
@@ -34,8 +33,12 @@ export default function PokemonStack(){
     const [ filterCreated, setFilterCreated ] = useState(null);
     const filter = {filterType, filterCreated};
 
+    //sort config
+    const [sort, setSort] = useState({orderBy: 'id', order: 'asc'});
+
     //displayed list
-    const filteredTags = name ? searchTag(pokemon, name) : filterTags(pokemon, filter);
+    let filteredTags = name ? searchTag(pokemon, name) : filterTags(pokemon, filter);
+    orderTags(pokemon, sort);
 
     // pagination config.
     const [ activePage, setActivePage ] = useState(1);
@@ -48,13 +51,23 @@ export default function PokemonStack(){
 
     return (
         <div>
-            <Search />
-            <Order />
+
+            <Order sort={sort} setSort={setSort}/>
+            
             <Filtering
                 setFilterType = {setFilterType}
                 setFilterCreated = {setFilterCreated}
                 types= {types}
             />
+
+            <ClearAll 
+                sort={sort}
+                setSort={setSort}
+                setFilterCreated={setFilterCreated}
+                setFilterType={setFilterType}
+                setActivePage={setActivePage}
+            />
+
             {calculatedTags && calculatedTags.map(p => {
                 return (
                     <PokemonTag
@@ -63,6 +76,7 @@ export default function PokemonStack(){
                         name= {p.name}
                         img= {p.img}
                         types={p.types}
+                        attack={p.attack}
                     />
                 );
             })}
@@ -74,7 +88,7 @@ export default function PokemonStack(){
                 totalPages = {totalPages}
                 setActivePage = {setActivePage} 
             />
-            ) : <p>No Pokemon found</p>}
+            ) : <p>catching pokemon</p> /*<img src="../../../public/loadingPoke" alt="loading"/>*/}
         </div>
     );
 };

@@ -15,6 +15,8 @@ export default function Search(){
           const queryString = new URLSearchParams(query).toString();
       
           history.push({ pathname: '/pokemon', search: queryString})
+
+          document.getElementById("nameSearch").value = '';
     }
     
     return (

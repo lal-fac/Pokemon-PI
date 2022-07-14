@@ -23,6 +23,11 @@ const rootReducer = function (state = initialState, action) {
                 ...state, 
                 types: action.payload.data
             };
+        case'cleanPokemonDetail':
+            return {
+                ...state,
+                pokemonDetail: {}
+            }
         default:
             return {...state};
     }
