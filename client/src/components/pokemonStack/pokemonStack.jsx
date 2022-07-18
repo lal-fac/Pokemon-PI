@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { useLocation } from "react-router-dom";
 
-import { getPokemon, getTypes } from "../../redux/actions";
+import { setLastId, getPokemon, getTypes } from "../../redux/actions";
 import ClearAll from "../clearAll/clearAll";
 import Filtering from "../filterTags/filtering";
 import { filterTags, searchTag } from "../filterTags/filterTags";
@@ -22,7 +22,10 @@ export default function PokemonStack(){
 
     let pokemon = useSelector(state => state.pokemon);
     let types = useSelector(state => state.types);
-    
+
+    // send last used id to store
+    dispatch(setLastId(pokemon.length));
+
     //get query name from url
     const { search } = useLocation();
     const queryParams = new URLSearchParams(search);
@@ -75,7 +78,7 @@ export default function PokemonStack(){
                         key={p.id}
                         name= {p.name}
                         img= {p.img}
-                        types={p.types}
+                        pokemonTypes={p.pokemonTypes}
                         attack={p.attack}
                     />
                 );

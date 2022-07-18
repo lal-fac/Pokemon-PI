@@ -17,7 +17,7 @@ export const cleanPokemonDetail = () => dispatch => {
         type: 'cleanPokemonDetail',
         payload: null
     })
-}
+};
 
 export const getPokemonDetail = (poke) => dispatch => {
     return (
@@ -42,3 +42,10 @@ export const getTypes = () => dispatch => {
         })
     );
 };
+
+export const setLastId = (id) => dispatch => {
+    return dispatch({
+        type: 'setLastId',
+        payload: id
+    })
+}

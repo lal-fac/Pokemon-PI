@@ -9,7 +9,7 @@ function filterType(filteredTags, filterType){
     if(!filterType){
         return filteredTags;
     } else{
-        filteredTags = filteredTags.filter(t => t.types.includes(filterType));
+        filteredTags = filteredTags.filter(t => t.pokemonTypes.includes(filterType));
         return filteredTags;
     }
 }

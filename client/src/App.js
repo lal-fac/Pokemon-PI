@@ -1,7 +1,7 @@
 import './App.css';
 
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useLocation } from 'react-router-dom';
 
 import DetailCard from './components/detailCard/detailCard';
 import PokemonStack from './components/pokemonStack/pokemonStack.jsx';
@@ -10,16 +10,21 @@ import NavBar from './components/navBar/navBar';
 import PokemonCreate from './components/createForm/pokemonCreate';
 
 function App() {
+  
+  const location = useLocation();
+
   return (
   <React.Fragment>
-    <NavBar />
+
+    {location.pathname !== '/' ? <NavBar /> : null}
+    
     <Switch>
       <Route path='/pokemon/:id' component={DetailCard} />
       <Route exact path='/pokemon' component={PokemonStack} />
-      <Route path='/create' component={PokemonCreate} />
+      <Route path='/catch' component={PokemonCreate} />
       <Route exact path='' component={Landing} />
-      
     </Switch>
+    
   </React.Fragment>
   );
 }

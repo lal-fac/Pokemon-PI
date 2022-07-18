@@ -14,7 +14,27 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    pokemonTypes: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull:false
+    },
     hp: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        min: 1,
+        max: 100
+      }
+    },
+    specialDefense: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        min: 1,
+        max: 100
+      }
+    },
+    specialDefense: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {

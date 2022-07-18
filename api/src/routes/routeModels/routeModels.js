@@ -13,7 +13,14 @@ module.exports = {
                 })
             );
             apiData = apiData.map(p => {
-                return {name: p.name, id: p.id, types: p.types, img: p.img, created: p.created, attack: p.stats[1]["base_stat"]}
+                return {
+                    name: p.name, 
+                    id: p.id, 
+                    pokemonTypes: p.pokemonTypes, 
+                    img: p.img, 
+                    created: p.created, 
+                    attack: p.attack
+                }
             });
 
             let dbData = await Pokemon.findAll({
@@ -33,10 +40,15 @@ module.exports = {
             const data = {
                 name: response.data.name,
                 id: response.data.id,
-                types: response.data.types.map(e => e.type.name),
+                pokemonTypes: response.data.types.map(e => e.type.name),
                 img: response.data.sprites.front_default,
                 bigImg: response.data.sprites.other["official-artwork"].front_default,
-                stats: response.data.stats,
+                hp: response.data.stats[0].base_stat,
+                attack: response.data.stats[1].base_stat,
+                defense: response.data.stats[2].base_stat,
+                specialAttack: response.data.stats[3].base_stat,
+                specialDefense: response.data.stats[4].base_stat,
+                speed: response.data.stats[5].base_stat,
                 height: response.data.height,
                 weight: response.data.weight,
                 created: false
@@ -67,10 +79,15 @@ module.exports = {
                     const data = {
                         name: response.data.name,
                         id: response.data.id,
-                        types: response.data.types.map(e => e.type.name),
+                        pokemonTypes: response.data.types.map(e => e.type.name),
                         img: response.data.sprites.front_default,
                         bigImg: response.data.sprites.other["official-artwork"].front_default,
-                        stats: response.data.stats,
+                        hp: response.data.stats[0].base_stat,
+                        attack: response.data.stats[1].base_stat,
+                        defense: response.data.stats[2].base_stat,
+                        specialAttack: response.data.stats[3].base_stat,
+                        specialDefense: response.data.stats[4].base_stat,
+                        speed: response.data.stats[5].base_stat,
                         height: response.data.height,
                         weight: response.data.weight
                     };
@@ -85,7 +102,7 @@ module.exports = {
                             id: id
                         }
                     });
-                    return dbResponse;
+                    return dbResponse[0];
                 } catch (err) {
                     throw new Error("Couldn't find that Pokemon");
                 }
@@ -99,10 +116,39 @@ module.exports = {
         }
     },
     addPokemon: async function(newPokemon) {
-        const { name, hp, attack, defense, speed, height, weight, id } = newPokemon;
+        const { 
+            name, 
+            hp, 
+            attack, 
+            defense, 
+            speed, 
+            height, 
+            weight, 
+            img, 
+            bigImg, 
+            pokemonTypes,
+            specialAttack, 
+            specialDefense
+            } = newPokemon;
         try {
             let id = await this.getLastId();
-            const newPokemon = await Pokemon.create({id, name, hp, attack, defense, speed, height, weight})
+            const newPokemon = await Pokemon.create(
+                {
+                id, 
+                name, 
+                hp, 
+                attack, 
+                defense, 
+                speed, 
+                height, 
+                weight, 
+                img, 
+                bigImg, 
+                pokemonTypes,
+                specialAttack, 
+                specialDefense
+                }
+            )
             return newPokemon;
         } catch(err) {
             throw new Error("Couldn't create Pokemon");

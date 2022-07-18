@@ -6,7 +6,7 @@ export default function NavBar() {
     return (
         <div>
             <NavLink to='/pokemon'>Home</NavLink>
-            <NavLink to='/create'>Create</NavLink>
+            <NavLink to='/catch'>Catch a pokemon!</NavLink>
             <Search />
         </div>
     );

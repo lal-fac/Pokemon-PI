@@ -1,9 +1,10 @@
-// import {actions} from '../actions/index.js';
+
 
 const initialState = {
     pokemon: [],
     types: [],
-    pokemonDetail: {}
+    pokemonDetail: {},
+    lastId: undefined
 };
 
 const rootReducer = function (state = initialState, action) {
@@ -27,6 +28,11 @@ const rootReducer = function (state = initialState, action) {
             return {
                 ...state,
                 pokemonDetail: {}
+            }
+        case'setLastId':
+            return{
+                ...state,
+                lastId: action.payload + 1
             }
         default:
             return {...state};
