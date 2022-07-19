@@ -117,7 +117,7 @@ export default function PokemonCreate () {
         (!input.name || !input.hp || !input.specialAttack || !input.specialDefense|| !input.attack || !input.defense || !input.speed || !input.height || !input.weight) ? submit.disabled = true : submit.disabled = false
     }
 
-    function handleSubmit(e){
+    async function handleSubmit(e){
         e.preventDefault();
         let pokemon = {
             name: input.name,
@@ -166,7 +166,7 @@ export default function PokemonCreate () {
                     {errors.name && <p>{errors.name}</p>}
                     <br/>
                     <label>species image:</label>
-                    <input type="file" id="imgLoad" name= "img" accept="image/png, image/jpeg" onChange={handleImgLoad}/>
+                    <input type="file" id="imgLoad" accept="image/png, image/jpeg" onChange={handleImgLoad}/>
                     <img id="sprite" src=""/>
                 </div>
                 <div>
