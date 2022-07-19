@@ -21,6 +21,13 @@ export default function PokemonStack(){
     }, [dispatch]);
 
     let pokemon = useSelector(state => state.pokemon);
+    pokemon = pokemon.map(p => {
+        return {
+            ...p, 
+            pokemonTypes: p.types.map(e => e.name)
+        }
+    });
+    console.log(pokemon[40])
     let types = useSelector(state => state.types);
 
     // send last used id to store

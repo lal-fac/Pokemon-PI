@@ -8,7 +8,7 @@ export function filterTags(pokemon, filter){
 function filterType(filteredTags, filterType){
     if(!filterType){
         return filteredTags;
-    } else{
+    } else {
         filteredTags = filteredTags.filter(t => t.pokemonTypes.includes(filterType));
         return filteredTags;
     }

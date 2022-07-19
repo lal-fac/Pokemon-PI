@@ -16,7 +16,7 @@ module.exports = {
                 return {
                     name: p.name, 
                     id: p.id, 
-                    pokemonTypes: p.pokemonTypes, 
+                    types: p.types, 
                     img: p.img, 
                     created: p.created, 
                     attack: p.attack
@@ -24,8 +24,13 @@ module.exports = {
             });
 
             let dbData = await Pokemon.findAll({
-                attributes: ['name', 'id', 'img'],
-                include: [{model: Types}]
+                attributes: ['name', 'id', 'img', 'attack', 'created'],
+                include: [{
+                    model: Types,
+                    through: {
+                        attributes: []
+                    }
+                }]
             });
             let listData = apiData.concat(dbData); 
             
@@ -40,7 +45,9 @@ module.exports = {
             const data = {
                 name: response.data.name,
                 id: response.data.id,
-                pokemonTypes: response.data.types.map(e => e.type.name),
+                types: response.data.types.map(e => {
+                    return {"name": e.type.name}
+                }),
                 img: response.data.sprites.front_default,
                 bigImg: response.data.sprites.other["official-artwork"].front_default,
                 hp: response.data.stats[0].base_stat,
@@ -60,7 +67,13 @@ module.exports = {
                     const dbResponse = await Pokemon.findAll({
                         where: {
                             name: nameQ
-                        }
+                        },
+                        include: [{
+                            model: Types,
+                            through: {
+                                attributes: []
+                            }
+                        }]
                     });
                     return dbResponse;
                 } catch (err) {
@@ -79,7 +92,9 @@ module.exports = {
                     const data = {
                         name: response.data.name,
                         id: response.data.id,
-                        pokemonTypes: response.data.types.map(e => e.type.name),
+                        types: response.data.types.map(e => {
+                            return {"name": e.type.name}
+                        }),
                         img: response.data.sprites.front_default,
                         bigImg: response.data.sprites.other["official-artwork"].front_default,
                         hp: response.data.stats[0].base_stat,
@@ -100,7 +115,13 @@ module.exports = {
                     const dbResponse = await Pokemon.findAll({
                         where: {
                             id: id
-                        }
+                        },
+                        include: [{
+                            model: Types,
+                            through: {
+                                attributes: []
+                            }
+                        }]
                     });
                     return dbResponse[0];
                 } catch (err) {
@@ -124,11 +145,12 @@ module.exports = {
             speed, 
             height, 
             weight, 
-            img, 
+            img,
             bigImg, 
             pokemonTypes,
             specialAttack, 
-            specialDefense
+            specialDefense,
+            created
             } = newPokemon;
         try {
             let id = await this.getLastId();
@@ -142,13 +164,14 @@ module.exports = {
                 speed, 
                 height, 
                 weight, 
-                img, 
+                img,
                 bigImg, 
-                pokemonTypes,
                 specialAttack, 
-                specialDefense
+                specialDefense,
+                created
                 }
             )
+            newPokemon.addTypes(pokemonTypes)
             return newPokemon;
         } catch(err) {
             throw new Error("Couldn't create Pokemon");

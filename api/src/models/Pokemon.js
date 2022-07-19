@@ -14,10 +14,6 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    pokemonTypes: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-      allowNull:false
-    },
     hp: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -26,7 +22,7 @@ module.exports = (sequelize) => {
         max: 100
       }
     },
-    specialDefense: {
+    specialAttack: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
@@ -87,6 +83,9 @@ module.exports = (sequelize) => {
       default: true
     },
     img: {
+      type: DataTypes.BLOB
+    },
+    bigImg: {
       type: DataTypes.BLOB
     }
   },

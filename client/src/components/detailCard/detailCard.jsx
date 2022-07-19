@@ -18,6 +18,8 @@ export default function DetailCard(){
     }, [dispatch, pokemonId]);
 
     let pokemon = useSelector(state => state.pokemonDetail);
+
+    console.log(pokemon)
     
     return (
         <div>
@@ -37,11 +39,11 @@ export default function DetailCard(){
             </ul>
             <h4>Types:</h4>
             <ul>
-            {pokemon.pokemonTypes && pokemon.pokemonTypes.map(t => {
+            {pokemon.types && pokemon.types.map(t => {
                 return(
                     <TypeTag 
-                        key={`${t}`}
-                        name={t} 
+                        key={`${t.name}`}
+                        name={t.name} 
                     />
                 );
             })}

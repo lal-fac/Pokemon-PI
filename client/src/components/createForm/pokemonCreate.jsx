@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import TypeTag from '../typeTag/typeTag';
 
 function validate(input){
@@ -66,6 +67,9 @@ export default function PokemonCreate () {
 
     let lastId = useSelector(state => state.lastId);
     const types = useSelector(state => state.types);
+
+    const history = useHistory();
+
     
     const [input, setInput] = useState({
         id: parseInt(lastId),
@@ -82,8 +86,22 @@ export default function PokemonCreate () {
 
     const [typeState, setTypeState] = useState([]);
     
+    const [imgState, setImgState] = useState();
+
     const [errors, setErrors] = useState({});
 
+    async function handleImgLoad(e) {
+        var file = document.getElementById("imgLoad").files[0];
+        var reader = new FileReader();
+        reader.onload = () => {
+            document.getElementById("sprite").src = reader.result;
+        }
+        reader.readAsDataURL(file);
+        const fileToBlob = async (file) => new Blob([new Uint8Array(await file.arrayBuffer())], {type: file.type })
+        const blob = await fileToBlob(file);
+
+        setImgState(blob);
+    };
 
     function handleChange(e){
         setInput({
@@ -114,10 +132,13 @@ export default function PokemonCreate () {
             specialDefense: input.specialDefense,
             speed: input.speed,
             height: input.height,
-            weight: input.weight
+            weight: input.weight,
+            created: true
         }
-
-        axios.post(`http://localhost:3001/pokemon`, pokemon);
+        axios.post(`http://localhost:3001/pokemon`, pokemon)
+        .then(created => {
+            history.push('/pokemon');
+            return alert(`${created.data.name} caught!`)})
     }
 
     function addType(e){
@@ -127,6 +148,8 @@ export default function PokemonCreate () {
 
         setTypeState(prevState => [...prevState, chosenType()]);
 
+        document.getElementById(chosenType()).disabled = true;
+
         if(typeState.length >= 1){
             let typeButtons = types.map(t => document.getElementById(`${t.name}`));
             typeButtons.forEach(b => b.disabled = true);
@@ -134,7 +157,7 @@ export default function PokemonCreate () {
     }
 
     return (
-        <div>
+        <div id="form">
             <form onSubmit={handleSubmit}>
                 <div name="basicInfo">
                     <h5>ID: {lastId}</h5>
@@ -142,8 +165,9 @@ export default function PokemonCreate () {
                     <input type="text" name="name" onChange={handleChange} />
                     {errors.name && <p>{errors.name}</p>}
                     <br/>
-                    <label htmlFor='img'>species image:</label>
-                    <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
+                    <label>species image:</label>
+                    <input type="file" id="imgLoad" name= "img" accept="image/png, image/jpeg" onChange={handleImgLoad}/>
+                    <img id="sprite" src=""/>
                 </div>
                 <div>
                     <p>Choose two types: </p>
@@ -192,44 +216,13 @@ export default function PokemonCreate () {
                     {errors.weight && <p>{errors.weight}</p>}
                     <br/>
                 </div>
-                <input type="submit" id="submit" value="Catch pokemon!" disabled/>
+                <input 
+                    type="submit" 
+                    id="submit" 
+                    value="Catch pokemon!" 
+                    disabled
+                />
             </form>
         </div>
     )
 }
-
-// let pokemon = {
-//     name: input.name,
-//     id: input.id,
-//     bigImg: undefined,
-//     img: undefined,
-//     types: [typeState[0], typeState[1]],
-//     stats: [
-//         {base_stat: input.hp, 
-//         stat:
-//             {name: "hp"}
-//         },
-//         {base_stat: input.attack, 
-//         stat:
-//             {name: "attack"}
-//         },
-//         {base_stat: input.defense, 
-//         stat:
-//             {name: "defense"}
-//         },
-//         {base_stat: input.specialAttack, 
-//         stat:
-//             {name: "special-attack"}
-//         },
-//         {base_stat: input.specialDefense, 
-//         stat:
-//             {name: "special-defense"}
-//         },
-//         {base_stat: input.speed, 
-//         stat:
-//             {name: "speed"}
-//         }
-//     ],
-//     height: input.height,
-//     weight: input.weight
-// }
