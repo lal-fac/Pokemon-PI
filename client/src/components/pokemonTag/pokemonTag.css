@@ -19,5 +19,6 @@
 }
 
 #tagImg {
-    width: 6rem;
+    width: 100px;
+    height: auto;
 }

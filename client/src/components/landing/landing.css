@@ -1,3 +1,5 @@
+
+
 #landing1 {
     display: flex;
     margin: auto;
@@ -13,7 +15,7 @@
     width: 52.4%;
     border-style: solid;
     border-width: 5rem;
-    background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0d5c02b5-f608-43fe-9294-c4973cc568e6/dekzd2i-a9350f8c-caba-4172-8a96-7427efc60e7b.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzBkNWMwMmI1LWY2MDgtNDNmZS05Mjk0LWM0OTczY2M1NjhlNlwvZGVremQyaS1hOTM1MGY4Yy1jYWJhLTQxNzItOGE5Ni03NDI3ZWZjNjBlN2IucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.n6bdIargNDoIYpXQRcwC9rP_cINHxQoyTs8J2Wdq44Y');
+    background-image: url('../../img_files/landingImage.png');
     background-repeat: no-repeat;
 }
 

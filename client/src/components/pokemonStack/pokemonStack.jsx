@@ -11,6 +11,7 @@ import Pagination from "../pagination/pagination";
 import PokemonTag from "../pokemonTag/pokemonTag";
 
 import './pokemonStack.css';
+import pokeball from '../../img_files/loadingPoke.gif';
 
 export default function PokemonStack(){
 
@@ -104,7 +105,7 @@ export default function PokemonStack(){
                     totalPages = {totalPages}
                     setActivePage = {setActivePage} 
                 />
-                ) : <p>catching pokemon</p>
+                ) : /*<h6>catching pokemon!</h6>*/ <img src={pokeball} alt="" width={'70px'} />
             }
             </div>
 
