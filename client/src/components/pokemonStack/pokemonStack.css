@@ -1,0 +1,43 @@
+#stack {
+    display: flex;
+    border-style: solid;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    padding-top: 2%;
+    background-color: rgba(184, 3, 3, 0.986);
+    background-blend-mode: lighten;
+}
+
+#filters {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: rgba(245, 245, 245, 0.938);
+    align-items: center;
+    width: 60%;
+    height: 5rem;
+    border-style: solid;
+    margin-bottom: 3%;
+}
+
+#tagStack {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    column-gap: 5rem;
+    row-gap: 1rem;
+    width: 50%;
+    padding-top: 1%;
+    border-style: solid;
+    background-color: rgba(245, 245, 245, 0.938);
+}
+
+#pagination {
+    align-self: flex-end;
+    display: flex;
+    flex-direction: row;
+    justify-content: column;
+}

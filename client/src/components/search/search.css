@@ -1,0 +1,14 @@
+#searchBox{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 15rem;
+}
+
+#nameSearch{
+    width: 10rem;
+    height: auto;
+    font-size: large;
+    font-family: monospace;
+}

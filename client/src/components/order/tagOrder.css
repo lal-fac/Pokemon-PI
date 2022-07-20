@@ -1,0 +1,17 @@
+#sortForm {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#orderBy{
+    font-size: medium;
+    font-family: monospace;
+    background-color: white;
+}
+
+#order {
+    font-size: medium;
+    font-family: monospace;
+    background-color: white;
+}

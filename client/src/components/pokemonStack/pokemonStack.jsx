@@ -10,6 +10,7 @@ import Order, { orderTags } from "../order/tagOrder";
 import Pagination from "../pagination/pagination";
 import PokemonTag from "../pokemonTag/pokemonTag";
 
+import './pokemonStack.css';
 
 export default function PokemonStack(){
 
@@ -60,45 +61,53 @@ export default function PokemonStack(){
     );
 
     return (
-        <div>
+        <div id="stack">
+            <div id="filters">
+                <Order sort={sort} setSort={setSort}/>
 
-            <Order sort={sort} setSort={setSort}/>
-            
-            <Filtering
-                setFilterType = {setFilterType}
-                setFilterCreated = {setFilterCreated}
-                types= {types}
-            />
+                <Filtering
+                    setFilterType = {setFilterType}
+                    setFilterCreated = {setFilterCreated}
+                    types= {types}
+                />
 
-            <ClearAll 
-                sort={sort}
-                setSort={setSort}
-                setFilterCreated={setFilterCreated}
-                setFilterType={setFilterType}
-                setActivePage={setActivePage}
-            />
+                <ClearAll 
+                    sort={sort}
+                    setSort={setSort}
+                    setFilterCreated={setFilterCreated}
+                    setFilterType={setFilterType}
+                    setActivePage={setActivePage}
+                />
 
-            {calculatedTags && calculatedTags.map(p => {
-                return (
-                    <PokemonTag
-                        id={p.id}
-                        key={p.id}
-                        name= {p.name}
-                        img= {p.img}
-                        pokemonTypes={p.pokemonTypes}
-                        attack={p.attack}
-                    />
-                );
-            })}
-            {count > 0 ? (
-                <Pagination
-                activePage = {activePage}
-                count = {count}
-                tagsPerPage = {tagsPerPage}
-                totalPages = {totalPages}
-                setActivePage = {setActivePage} 
-            />
-            ) : <p>catching pokemon</p> /*<img src="../../../public/loadingPoke" alt="loading"/>*/}
+            </div>
+
+            <div id="tagStack">
+                {calculatedTags && calculatedTags.map(p => {
+                    return (
+                        <PokemonTag
+                            id={p.id}
+                            key={p.id}
+                            name= {p.name}
+                            img= {p.img}
+                            pokemonTypes={p.pokemonTypes}
+                            attack={p.attack}
+                        />
+                    );
+                })}
+            </div>
+            <div id="pagination">
+                {count > 0 ? (
+                    <Pagination
+                    activePage = {activePage}
+                    count = {count}
+                    tagsPerPage = {tagsPerPage}
+                    totalPages = {totalPages}
+                    setActivePage = {setActivePage} 
+                />
+                ) : <p>catching pokemon</p>
+            }
+            </div>
+
         </div>
     );
 };

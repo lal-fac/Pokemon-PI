@@ -1,0 +1,36 @@
+#navBar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 3rem;
+}
+
+#navLinkDiv{
+    display: flex;
+    flex-direction: row;
+    width: 25rem;
+    height: rem;
+    justify-content: space-around;
+}
+
+.navLinks{
+    font-size:x-large;
+    font-family: monospace;
+    text-align: center;
+    color:white;
+    background-color: black;
+    align-items: center;
+    width: 10rem;
+    height: 3rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    text-decoration: none;
+}
+.navLinks:hover{
+    color:black;
+    background-color: white;
+}
+.navLinks:disabled{
+    color:black;
+    background-color: white;
+}

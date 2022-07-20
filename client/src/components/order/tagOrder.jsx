@@ -1,3 +1,5 @@
+import './tagOrder.css'
+
 export function orderTags(filteredTags, sort){
     if(sort.order === 'asc'){
         filteredTags.sort((a, b) => {
@@ -24,7 +26,7 @@ export default function Order({ setSort, sort }) {
     }
 
     return(
-        <form onChange={handleChange}>            
+        <form id="sortForm" onChange={handleChange}>            
             <select id="orderBy" name="orderBy">
                 <option value="id">ID</option>
                 <option value="attack">attack</option>

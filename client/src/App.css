@@ -36,3 +36,38 @@
     transform: rotate(360deg);
   }
 }
+
+.navButton {
+  width: auto;
+  height: auto;
+  border-radius: 0%;
+  font-size: large;
+  font-family: monospace;
+  color: white;
+  background-color: black;
+  border-style: none;
+}
+.navButton:hover {
+  color: black;
+  background-color: white;
+}
+
+label {
+  font-size: medium;
+  font-family: monospace;
+}
+
+option {
+  font-size: medium;
+  font-family: monospace;
+  background-color: black;
+  color: white;
+}
+option:hover {
+  background-color: white;
+  color: black
+}
+
+input {
+  font-family: monospace;
+}

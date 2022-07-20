@@ -1,6 +1,8 @@
 import { useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 
+import './search.css'
+
 export default function Search(){
     
     const searchInputRef = useRef();
@@ -20,9 +22,9 @@ export default function Search(){
     }
     
     return (
-            <form onSubmit={handleSubmit}>
+            <form id="searchBox" onSubmit={handleSubmit}>
             <input id="nameSearch" type="text" placeholder="pokemon" ref={searchInputRef}/>
-                <input type="submit" value="Search"/>
+                <input className="navButton" type="submit" value="Search"/>
             </form>
     );
 }

@@ -1,0 +1,21 @@
+#filtering{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#typesFilter {
+    font-size: large;
+    font-family: monospace;
+    background-color: white;
+}
+
+#createdFilter {
+    font-size: large;
+    font-family: monospace;
+    background-color: white;
+}
+
+#filterButton {
+    font-size: medium;
+}

@@ -29,6 +29,6 @@ export default function ClearAll({ setSort, setFilterCreated, setFilterType, set
     }
     
     return(
-        <button onClick={handleClick}>Clear All</button>
+        <button className="navButton" onClick={handleClick}>Clear All</button>
     )
 };

@@ -1,0 +1,23 @@
+#pokemonTag{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 8rem;
+    height: 15rem;
+    padding-top: 3%;
+}
+
+#tagName {
+    font-family: monospace;
+    font-size: large;
+    color: black;
+    text-decoration-line: none;
+}
+#tagName:hover {
+    font-size: larger;
+}
+
+#tagImg {
+    width: 6rem;
+}

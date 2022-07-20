@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import TypeTag from '../typeTag/typeTag';
 
+import './pokemonCreate.css';
+
 function validate(input){
     let errors= {};
     if (input.name && (!/^[^A-Z]/g.test(input.name))) {
@@ -159,7 +161,7 @@ export default function PokemonCreate () {
     return (
         <div id="form">
             <form onSubmit={handleSubmit}>
-                <div name="basicInfo">
+                <div id="createBasicInfo" name="basicInfo">
                     <h5>ID: {lastId}</h5>
                     <label htmlFor='name'>name:</label>
                     <input type="text" name="name" onChange={handleChange} />
@@ -167,56 +169,60 @@ export default function PokemonCreate () {
                     <br/>
                     <label>species image:</label>
                     <input type="file" id="imgLoad" accept="image/png, image/jpeg" onChange={handleImgLoad}/>
+                </div>
+                <div id="typesCreate">
+                    <p>Choose two types: </p>
+                    <div>
+                        {types 
+                        && types.map(t => {
+                            return(
+                                <button onClick={addType} key={t.id} className="typeButton" id={t.name}>
+                                    <TypeTag name={t.name} className="typeButton" />
+                                </button>
+                            )
+                        })}
+                    </div>
+                </div>
+                <div id="createPage2">
+                    <div id="createStats" name="stats">
+                        <p>Stats:</p>
+                        <br/>
+                        <label htmlFor='hp'>health points:</label>
+                        <input type="text" name="hp" onChange={handleChange} />
+                        {errors.hp && <p>{errors.hp}</p>}
+                        <br/>
+                        <label htmlFor='attack'>attack:</label>
+                        <input type="text" name="attack" onChange={handleChange} />
+                        {errors.attack && <p>{errors.attack}</p>}
+                        <br/>
+                        <label htmlFor='defense'>defense:</label>
+                        <input type="text" name="defense" onChange={handleChange} />
+                        {errors.defense && <p>{errors.defense}</p>}
+                        <br/>
+                        <label htmlFor='specialAttack'>special-attack:</label>
+                        <input type="text" name="specialAttack" onChange={handleChange} />
+                        {errors.specialAttack && <p>{errors.specialAttack}</p>}
+                        <br/>
+                        <label htmlFor='specialDefense'>special-defense:</label>
+                        <input type="text" name="specialDefense" onChange={handleChange} />
+                        {errors.specialDefense && <p>{errors.specialDefense}</p>}
+                        <br/>
+                        <label htmlFor='speed'>speed:</label>
+                        <input type="text" name="speed" onChange={handleChange} />
+                        {errors.speed && <p>{errors.speed}</p>}
+                        <br/>
+                        <label htmlFor='height'>height:</label>
+                        <input type="text" name="height" onChange={handleChange} />
+                        {errors.height && <p>{errors.height}</p>}
+                        <br/>
+                        <label htmlFor='weight'>weight:</label>
+                        <input type="text" name="weight" onChange={handleChange} />
+                        {errors.weight && <p>{errors.weight}</p>}
+                        <br/>
+                    </div>
                     <img id="sprite" src=""/>
                 </div>
-                <div>
-                    <p>Choose two types: </p>
-                    {types 
-                    && types.map(t => {
-                        return(
-                            <button onClick={addType} key={t.id} id={t.name}>
-                                <TypeTag name={t.name} />
-                            </button>
-                        )
-                    })}
-                </div>
-                <div name="stats">
-                    <p>Stats:</p>
-                    <br/>
-                    <label htmlFor='hp'>health points:</label>
-                    <input type="text" name="hp" onChange={handleChange} />
-                    {errors.hp && <p>{errors.hp}</p>}
-                    <br/>
-                    <label htmlFor='attack'>attack:</label>
-                    <input type="text" name="attack" onChange={handleChange} />
-                    {errors.attack && <p>{errors.attack}</p>}
-                    <br/>
-                    <label htmlFor='defense'>defense:</label>
-                    <input type="text" name="defense" onChange={handleChange} />
-                    {errors.defense && <p>{errors.defense}</p>}
-                    <br/>
-                    <label htmlFor='specialAttack'>special-attack:</label>
-                    <input type="text" name="specialAttack" onChange={handleChange} />
-                    {errors.specialAttack && <p>{errors.specialAttack}</p>}
-                    <br/>
-                    <label htmlFor='specialDefense'>special-defense:</label>
-                    <input type="text" name="specialDefense" onChange={handleChange} />
-                    {errors.specialDefense && <p>{errors.specialDefense}</p>}
-                    <br/>
-                    <label htmlFor='speed'>speed:</label>
-                    <input type="text" name="speed" onChange={handleChange} />
-                    {errors.speed && <p>{errors.speed}</p>}
-                    <br/>
-                    <label htmlFor='height'>height:</label>
-                    <input type="text" name="height" onChange={handleChange} />
-                    {errors.height && <p>{errors.height}</p>}
-                    <br/>
-                    <label htmlFor='weight'>weight:</label>
-                    <input type="text" name="weight" onChange={handleChange} />
-                    {errors.weight && <p>{errors.weight}</p>}
-                    <br/>
-                </div>
-                <input 
+                <input
                     type="submit" 
                     id="submit" 
                     value="Catch pokemon!" 

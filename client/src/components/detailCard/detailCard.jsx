@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import { cleanPokemonDetail, getPokemonDetail } from "../../redux/actions";
 import TypeTag from "../typeTag/typeTag";
 
+import './detailCard.css'
+
 export default function DetailCard(){
 
     let dispatch = useDispatch();
@@ -22,12 +24,14 @@ export default function DetailCard(){
     console.log(pokemon)
     
     return (
-        <div>
-            <h3>{pokemon.name}</h3>
-            <h4>{pokemon.id}</h4>
+        <div id="detailCard">
+            <span id="detailHeader">
+                <h3>{pokemon.name}</h3>
+                <h4 id="idh4">{pokemon.id}</h4>
+            </span>
             {pokemon.bigImg ? <img src={pokemon.bigImg} alt={pokemon.name}/> : null}
             <h4>Stats:</h4>
-            <ul>
+            <ul id="statsDetail">
                 <li>Health points: {pokemon.hp}</li>
                 <li>Attack: {pokemon.attack}</li>
                 <li>Defense: {pokemon.defense}</li>
@@ -38,10 +42,10 @@ export default function DetailCard(){
                 <li>Weight: {pokemon.weight}</li>
             </ul>
             <h4>Types:</h4>
-            <ul>
+            <ul id="typeDetail">
             {pokemon.types && pokemon.types.map(t => {
                 return(
-                    <TypeTag 
+                    <TypeTag
                         key={`${t.name}`}
                         name={t.name} 
                     />
